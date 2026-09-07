@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NVIDOG | $NVIDOG — The GPU of Memes</title>
+  <meta name="description" content="NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave. $NVIDOG on Solana." />
+  <meta name="theme-color" content="#050805" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta property="og:title" content="NVIDOG | $NVIDOG" />
+  <meta property="og:description" content="NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave." />
+  <meta property="og:image" content="banner.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nv: {
+              green: "#76B900",
+              lime: "#A8E600",
+              glow: "#C8FF3A",
+              black: "#050805",
+              ink: "#080B06",
+              panel: "#0B1109",
+              card: "#10170C",
+              mute: "#93A67C",
+              line: "#1E2F14",
+              mist: "#D7E8C4"
+            }
+          },
+          fontFamily: {
+            display: ["Orbitron", "sans-serif"],
+            body: ["Rajdhani", "sans-serif"],
+            mono: ["Share Tech Mono", "ui-monospace", "monospace"]
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(118,185,0,0.35)",
+            "glow-lg": "0 0 80px rgba(118,185,0,0.28)",
+            innerg: "inset 0 0 40px rgba(118,185,0,0.08)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --nv-green: #76B900;
+      --nv-lime: #A8E600;
+      --nv-glow: #C8FF3A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Rajdhani", sans-serif;
+      background: #050805;
+      color: #E8F3D6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: #76B900; color: #050805; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #050805; }
+    ::-webkit-scrollbar-thumb { background: #76B900; border-radius: 0; }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(118, 185, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(118, 185, 0, 0.05) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    .scanlines {
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 0, 0, 0.12) 3px,
+        transparent 4px
+      );
+      pointer-events: none;
+    }
+
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      opacity: 0.07;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    .clip-chip {
+      clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    }
+
+    .clip-btn {
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    }
+
+    .clip-panel {
+      clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+    }
+
+    .ticker-track {
+      animation: ticker 42s linear infinite;
+    }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(118, 185, 0, 0.55), 0 0 32px rgba(118, 185, 0, 0.35); }
+      50% { box-shadow: 0 0 0 8px rgba(118, 185, 0, 0), 0 0 48px rgba(168, 230, 0, 0.5); }
+    }
+
+    @keyframes led {
+      0%, 100% { opacity: 1; filter: drop-shadow(0 0 6px #76B900); }
+      50% { opacity: 0.45; filter: drop-shadow(0 0 2px #76B900); }
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -240; }
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ken {
+      0% { transform: scale(1) translate3d(0, 0, 0); }
+      50% { transform: scale(1.08) translate3d(-1.2%, 1%, 0); }
+      100% { transform: scale(1) translate3d(0, 0, 0); }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-120%); opacity: 0; }
+      20% { opacity: 0.7; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    .hero-art { animation: ken 28s ease-in-out infinite; }
+    .logo-ring { animation: pulse-glow 3.2s ease-in-out infinite; }
+    .led { animation: led 1.8s ease-in-out infinite; }
+    .reveal { animation: rise 0.8s ease both; }
+
+    .circuit-line {
+      stroke-dasharray: 8 12;
+      animation: dash 8s linear infinite;
+    }
+
+    .btn-shine { position: relative; overflow: hidden; }
+    .btn-shine::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.28) 48%, transparent 66%);
+      transform: translateX(-120%);
+    }
+    .btn-shine:hover::after { animation: sweep 0.7s ease; }
+
+    .ca-chip:hover { border-color: #76B900; box-shadow: 0 0 24px rgba(118,185,0,0.25); }
+
+    .nav-scrolled {
+      background: rgba(5, 8, 5, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom-color: rgba(118, 185, 0, 0.28) !important;
+    }
+
+    .step-card:hover .step-index { color: #050805; background: #76B900; }
+
+    .hex-pattern {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='48' viewBox='0 0 84 48'%3E%3Cpath d='M42 0l21 12v24L42 48 21 36V12z' fill='none' stroke='%2376B900' stroke-opacity='0.07'/%3E%3C/svg%3E");
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track, .hero-art, .logo-ring, .led, .circuit-line, .reveal { animation: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-nv-black text-nv-mist antialiased">
+  <!-- ambient layers -->
+  <div class="fixed inset-0 -z-10 bg-nv-black"></div>
+  <div class="fixed inset-0 -z-10 pointer-events-none"
+       style="background:
+         radial-gradient(ellipse 80% 50% at 12% -10%, rgba(118,185,0,0.22), transparent 55%),
+         radial-gradient(ellipse 60% 40% at 92% 8%, rgba(30,60,90,0.18), transparent 50%),
+         radial-gradient(ellipse 50% 40% at 70% 100%, rgba(118,185,0,0.08), transparent 55%);">
+  </div>
+  <div class="fixed inset-0 -z-10 grid-bg hex-pattern opacity-80 pointer-events-none"></div>
+  <div class="fixed inset-0 -z-10 noise"></div>
+
+  <svg class="fixed inset-0 w-full h-full -z-10 pointer-events-none opacity-40" aria-hidden="true">
+    <defs>
+      <linearGradient id="trace" x1="0" x2="1">
+        <stop offset="0%" stop-color="#76B900" stop-opacity="0" />
+        <stop offset="50%" stop-color="#A8E600" stop-opacity="0.9" />
+        <stop offset="100%" stop-color="#76B900" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <path class="circuit-line" d="M0 120 H180 V220 H420 V80 H720" fill="none" stroke="url(#trace)" stroke-width="1.2" />
+    <path class="circuit-line" d="M1400 640 H980 V360 H620" fill="none" stroke="url(#trace)" stroke-width="1" style="animation-delay: -3s;" />
+  </svg>
+
+  <!-- ticker -->
+  <div class="relative z-40 border-b border-nv-green/25 bg-nv-black/90 overflow-hidden">
+    <div class="flex ticker-track whitespace-nowrap font-mono text-[11px] sm:text-xs tracking-[0.28em] uppercase text-nv-green py-2">
+      <span class="px-6">$NVIDOG</span><span class="text-nv-mute">●</span>
+      <span class="px-6">NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Render the meme</span><span class="text-nv-mute">●</span>
+      <span class="px-6">GPU-powered canine</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Solana</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Meme Core architecture</span><span class="text-nv-mute">●</span>
+      <span class="px-6">$NVIDOG</span><span class="text-nv-mute">●</span>
+      <span class="px-6">NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Render the meme</span><span class="text-nv-mute">●</span>
+      <span class="px-6">GPU-powered canine</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Solana</span><span class="text-nv-mute">●</span>
+      <span class="px-6">Meme Core architecture</span><span class="text-nv-mute">●</span>
+    </div>
+  </div>
+
+  <!-- nav -->
+  <header id="nav" class="sticky top-0 z-50 border-b border-transparent transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-[72px] flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center gap-3 group">
+        <img src="logo.png" alt="NVIDOG logo" class="w-10 h-10 rounded-full object-cover ring-2 ring-nv-green/80 group-hover:ring-nv-lime transition" />
+        <div class="leading-none">
+          <div class="font-display font-extrabold tracking-[0.22em] text-sm text-white">NVIDOG</div>
+          <div class="font-mono text-[10px] text-nv-green tracking-[0.32em] mt-1">$NVIDOG</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 font-display text-[11px] tracking-[0.28em] uppercase text-nv-mist/80">
+        <a href="#about" class="hover:text-nv-green transition">About</a>
+        <a href="#buy" class="hover:text-nv-green transition">How to Buy</a>
+        <a href="#chart" class="hover:text-nv-green transition">Chart</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://t.me/NVIDOG" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10 hover:ring-nv-green transition" aria-label="Telegram">
+          <img src="tg.png" alt="Telegram" class="w-full h-full object-cover" />
+        </a>
+        <a href="https://x.com/NVIDOG" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden bg-black ring-1 ring-white/10 hover:ring-nv-green transition" aria-label="X / Twitter">
+          <img src="x.png" alt="X" class="w-full h-full object-cover" />
+        </a>
+        <a data-buy href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex clip-btn btn-shine bg-nv-green text-nv-black font-display font-bold text-[11px] tracking-[0.22em] uppercase px-5 py-2.5 hover:bg-nv-lime shadow-glow transition">
+          Buy Now
+        </a>
+        <button id="menuBtn" class="md:hidden w-10 h-10 grid place-items-center border border-nv-green/40 text-nv-green" aria-label="Open menu">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4h14M2 9h14M2 14h14"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden border-t border-nv-green/20 bg-nv-black/95 px-4 py-4 space-y-3 font-display text-xs tracking-[0.24em] uppercase">
+      <a href="#about" class="block py-2 hover:text-nv-green">About</a>
+      <a href="#buy" class="block py-2 hover:text-nv-green">How to Buy</a>
+      <a href="#chart" class="block py-2 hover:text-nv-green">Chart</a>
+      <a data-buy href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="block clip-btn bg-nv-green text-nv-black text-center py-3 font-bold">Buy Now</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="relative min-h-[92vh] flex items-end overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="banner.jpg" alt="NVIDOG standing in a neon data center" class="hero-art w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-gradient-to-r from-nv-black/80 via-nv-black/35 to-nv-black/70"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-nv-black via-nv-black/50 to-transparent"></div>
+        <div class="absolute inset-0 scanlines opacity-40"></div>
+        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-nv-green via-nv-lime to-transparent"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-transparent via-slate-400/40 to-nv-green/40"></div>
+      </div>
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 pt-24">
+        <div class="flex flex-col lg:flex-row lg:items-end gap-10 lg:gap-16">
+          <div class="flex-1">
+            <div class="inline-flex items-center gap-2 border border-nv-green/40 bg-nv-black/50 backdrop-blur-sm px-3 py-1.5 mb-6">
+              <span class="led w-2 h-2 rounded-full bg-nv-green"></span>
+              <span class="font-mono text-[10px] tracking-[0.35em] uppercase text-nv-green">NVIDOG ON · Solana</span>
+            </div>
+
+            <div class="flex items-center gap-5 mb-6">
+              <img src="logo.png" alt="NVIDOG" class="logo-ring w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover ring-2 ring-nv-green" />
+              <div>
+                <p class="font-mono text-nv-green text-xs tracking-[0.5em] mb-1">FOUNDERS EDITION</p>
+                <h1 class="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-[0.08em] text-white leading-none">
+                  NVI<span class="text-nv-green">DOG</span>
+                </h1>
+              </div>
+            </div>
+
+            <p class="max-w-2xl text-lg sm:text-2xl font-medium text-nv-mist/95 leading-snug mb-3">
+              NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave.
+            </p>
+            <p class="font-display text-[11px] sm:text-xs tracking-[0.38em] uppercase text-nv-green mb-8">
+              The GPU of memes · Rendered on Solana · Ticker $NVIDOG
+            </p>
+
+            <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mb-6">
+              <button id="copyCa" type="button" class="ca-chip clip-chip flex items-center gap-3 bg-nv-black/70 border border-nv-green/35 px-4 py-3 text-left transition">
+                <span class="font-mono text-[10px] tracking-[0.3em] text-nv-green">CA</span>
+                <span id="caText" class="font-mono text-sm sm:text-base text-white tracking-wider">TBA</span>
+                <span class="ml-auto font-display text-[10px] tracking-[0.2em] uppercase text-nv-mute">Copy</span>
+              </button>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              <a data-buy href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer"
+                 class="clip-btn btn-shine inline-flex items-center gap-2 bg-nv-green text-nv-black font-display font-extrabold tracking-[0.22em] uppercase text-sm px-8 py-4 shadow-glow hover:bg-nv-lime hover:shadow-glow-lg transition">
+                Buy Now
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a data-chart href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer"
+                 class="clip-btn inline-flex items-center gap-2 border border-nv-green/70 text-nv-green font-display font-bold tracking-[0.22em] uppercase text-sm px-8 py-4 bg-nv-black/40 hover:bg-nv-green hover:text-nv-black transition">
+                Chart
+              </a>
+            </div>
+          </div>
+
+          <aside class="w-full lg:w-[340px] clip-panel border border-nv-green/30 bg-nv-black/65 backdrop-blur-md p-5 shadow-innerg">
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-display text-[10px] tracking-[0.32em] text-nv-green">TECH SPECS</span>
+              <span class="font-mono text-[10px] text-nv-mute">REV 01</span>
+            </div>
+            <dl class="divide-y divide-nv-green/15 text-sm">
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">Name</dt><dd class="font-display font-bold">NVIDOG</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">Symbol</dt><dd class="font-display font-bold text-nv-green">$NVIDOG</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">Chain</dt><dd class="font-display font-bold">Solana</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">Architecture</dt><dd class="font-display font-bold">Meme Core</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">Boost Clock</dt><dd class="font-display font-bold">Unlimited</dd></div>
+              <div class="flex justify-between py-2.5"><dt class="text-nv-mute tracking-widest uppercase text-[11px]">TDP</dt><dd class="font-display font-bold">100% Based</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="relative py-24 sm:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div class="lg:col-span-5">
+            <div class="relative mx-auto max-w-md">
+              <div class="absolute -inset-3 bg-nv-green/20 blur-2xl rounded-full"></div>
+              <div class="relative clip-panel border border-nv-green/40 bg-nv-card p-3">
+                <div class="relative overflow-hidden">
+                  <img src="logo.png" alt="NVIDOG split green and black Shiba" class="w-full aspect-square object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-nv-black/80 via-transparent to-transparent"></div>
+                  <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                    <span class="font-mono text-[10px] tracking-[0.3em] text-nv-green">SPLIT CORE</span>
+                    <span class="font-mono text-[10px] text-white/70">GREEN / BLACK</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute -left-2 top-8 w-16 h-px bg-nv-green"></div>
+              <div class="absolute -right-2 bottom-16 w-16 h-px bg-nv-green"></div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <p class="font-mono text-nv-green text-xs tracking-[0.45em] uppercase mb-3">01 — Narrative</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-wide text-white mb-6">
+              Compute energy.<br /><span class="text-nv-green">Canine chaos.</span>
+            </h2>
+            <p class="text-lg sm:text-xl text-nv-mist/90 leading-relaxed mb-5">
+              NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave.
+              Half lime-green silicon, half shadow Shiba — a dual-core mascot built for data-center lore and timeline dominance.
+            </p>
+            <p class="text-base sm:text-lg text-nv-mute leading-relaxed mb-8">
+              While the world clocks GPU cycles, $NVIDOG clocks culture. Born in a neon server hall, rendered on Solana,
+              and shipped as the Founders Edition of meme compute: fast, loud, and impossible to ignore.
+            </p>
+
+            <div class="grid sm:grid-cols-3 gap-3">
+              <div class="clip-chip border border-nv-green/25 bg-nv-panel p-4">
+                <div class="font-display text-nv-green text-xl font-bold">01</div>
+                <div class="font-display text-xs tracking-[0.2em] uppercase mt-1">Tech Energy</div>
+                <p class="text-sm text-nv-mute mt-1">NVIDIA-inspired glow, grids, and GPU swagger.</p>
+              </div>
+              <div class="clip-chip border border-nv-green/25 bg-nv-panel p-4">
+                <div class="font-display text-nv-green text-xl font-bold">02</div>
+                <div class="font-display text-xs tracking-[0.2em] uppercase mt-1">Dog Memes</div>
+                <p class="text-sm text-nv-mute mt-1">Unstoppable Shiba energy, split-core identity.</p>
+              </div>
+              <div class="clip-chip border border-nv-green/25 bg-nv-panel p-4">
+                <div class="font-display text-nv-green text-xl font-bold">03</div>
+                <div class="font-display text-xs tracking-[0.2em] uppercase mt-1">Next Wave</div>
+                <p class="text-sm text-nv-mute mt-1">Solana speed. Community clocked to boost.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="buy" class="relative py-24 sm:py-32 border-y border-nv-green/15">
+      <div class="absolute inset-0 hex-pattern opacity-60 pointer-events-none"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+          <div>
+            <p class="font-mono text-nv-green text-xs tracking-[0.45em] uppercase mb-3">02 — Install</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-wide text-white">How to Buy $NVIDOG</h2>
+            <p class="mt-3 max-w-xl text-nv-mute text-lg">Four PCIe slots. One swap. Load SOL, slot the GPU of memes, and render your bag on Solana.</p>
+          </div>
+          <a data-buy href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer"
+             class="clip-btn btn-shine inline-flex self-start bg-nv-green text-nv-black font-display font-extrabold tracking-[0.2em] uppercase text-sm px-6 py-3 shadow-glow hover:bg-nv-lime transition">
+            Buy Now
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          <article class="step-card relative clip-panel border border-nv-green/30 bg-nv-card p-6 hover:border-nv-green transition group">
+            <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-nv-green to-transparent"></div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="step-index font-display font-black w-12 h-12 grid place-items-center border border-nv-green text-nv-green text-lg transition">01</span>
+              <span class="font-mono text-[10px] tracking-[0.25em] text-nv-mute">SLOT A</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Create a Solana wallet</h3>
+            <p class="text-nv-mute leading-relaxed">Install Phantom or Solflare. This is your GPU bay — the wallet that will hold $NVIDOG compute.</p>
+          </article>
+
+          <article class="step-card relative clip-panel border border-nv-green/30 bg-nv-card p-6 hover:border-nv-green transition group">
+            <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-nv-green to-transparent"></div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="step-index font-display font-black w-12 h-12 grid place-items-center border border-nv-green text-nv-green text-lg transition">02</span>
+              <span class="font-mono text-[10px] tracking-[0.25em] text-nv-mute">SLOT B</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Charge the core with SOL</h3>
+            <p class="text-nv-mute leading-relaxed">Buy SOL on any major exchange and send it to your wallet. SOL is the power rail for the swap.</p>
+          </article>
+
+          <article class="step-card relative clip-panel border border-nv-green/30 bg-nv-card p-6 hover:border-nv-green transition group">
+            <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-nv-green to-transparent"></div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="step-index font-display font-black w-12 h-12 grid place-items-center border border-nv-green text-nv-green text-lg transition">03</span>
+              <span class="font-mono text-[10px] tracking-[0.25em] text-nv-mute">SLOT C</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Launch the swap</h3>
+            <p class="text-nv-mute leading-relaxed">Hit Buy Now to open Pump.fun with SOL as input and $NVIDOG as output — preloaded, no hunting.</p>
+          </article>
+
+          <article class="step-card relative clip-panel border border-nv-green/30 bg-nv-card p-6 hover:border-nv-green transition group">
+            <div class="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-nv-green to-transparent"></div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="step-index font-display font-black w-12 h-12 grid place-items-center border border-nv-green text-nv-green text-lg transition">04</span>
+              <span class="font-mono text-[10px] tracking-[0.25em] text-nv-mute">SLOT D</span>
+            </div>
+            <h3 class="font-display font-bold text-xl text-white mb-2">Swap SOL for $NVIDOG</h3>
+            <p class="text-nv-mute leading-relaxed">Confirm the trade, then you’re holding the GPU of memes. Chart it, copy the CA, render the wave.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="relative py-24 sm:py-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+          <div>
+            <p class="font-mono text-nv-green text-xs tracking-[0.45em] uppercase mb-3">03 — Telemetry</p>
+            <h2 class="font-display font-extrabold text-3xl sm:text-5xl tracking-wide text-white">Live Chart</h2>
+            <p class="mt-3 max-w-xl text-nv-mute text-lg">Dexscreener feed for $NVIDOG. Watch the compute clock in real time once the pair is live.</p>
+          </div>
+          <a data-chart href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer"
+             class="clip-btn inline-flex items-center gap-2 border border-nv-green text-nv-green font-display font-bold tracking-[0.2em] uppercase text-sm px-6 py-3 hover:bg-nv-green hover:text-nv-black transition">
+            Open Chart
+          </a>
+        </div>
+
+        <div class="relative clip-panel border border-nv-green/35 bg-nv-card p-2 sm:p-3 shadow-glow">
+          <div class="flex items-center gap-2 px-3 py-2 mb-2">
+            <span class="led w-2 h-2 rounded-full bg-nv-green"></span>
+            <span class="font-mono text-[10px] tracking-[0.3em] text-nv-green uppercase">Dexscreener embed · Solana</span>
+            <span class="ml-auto font-mono text-[10px] text-nv-mute hidden sm:inline">$NVIDOG / SOL</span>
+          </div>
+          <div class="relative bg-black min-h-[420px] sm:min-h-[560px]">
+            <iframe
+              id="dexEmbed"
+              title="Dexscreener chart for NVIDOG"
+              src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+              class="w-full h-[420px] sm:h-[560px] border-0"
+              allow="clipboard-write"
+            ></iframe>
+            <div id="chartPlaceholder" class="absolute inset-0 hidden items-center justify-center overflow-hidden">
+              <img src="banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-30" />
+              <div class="absolute inset-0 bg-nv-black/70"></div>
+              <div class="relative text-center px-6">
+                <p class="font-display text-2xl sm:text-3xl font-bold text-white mb-2">Chart initializes at launch</p>
+                <p class="text-nv-mute mb-6">Replace TBA with the live pair and this Dexscreener embed goes hot.</p>
+                <a data-chart href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer"
+                   class="clip-btn inline-flex bg-nv-green text-nv-black font-display font-bold tracking-[0.2em] uppercase text-sm px-6 py-3">
+                  Open Dexscreener
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="relative pb-24 sm:pb-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="relative clip-panel overflow-hidden border border-nv-green/35">
+          <img src="banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+          <div class="absolute inset-0 bg-gradient-to-r from-nv-black via-nv-black/80 to-nv-black/50"></div>
+          <div class="relative px-6 sm:px-12 py-14 sm:py-20 flex flex-col lg:flex-row lg:items-center gap-10">
+            <div class="flex-1">
+              <p class="font-mono text-nv-green text-xs tracking-[0.45em] uppercase mb-3">04 — Cluster</p>
+              <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white mb-4">Join the compute pack</h2>
+              <p class="text-lg text-nv-mist/90 max-w-xl">
+                NVIDOG fuses NVIDIA-inspired tech energy with unstoppable dog memes, powering the next crypto wave —
+                and the pack is assembling on Telegram and X.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://t.me/NVIDOG" target="_blank" rel="noopener noreferrer"
+                 class="clip-btn inline-flex items-center gap-3 bg-nv-green text-nv-black font-display font-bold tracking-[0.18em] uppercase text-sm px-6 py-4 hover:bg-nv-lime transition">
+                <img src="tg.png" alt="" class="w-6 h-6 rounded-full" />
+                Telegram
+              </a>
+              <a href="https://x.com/NVIDOG" target="_blank" rel="noopener noreferrer"
+                 class="clip-btn inline-flex items-center gap-3 border border-white/30 bg-black/50 text-white font-display font-bold tracking-[0.18em] uppercase text-sm px-6 py-4 hover:border-nv-green hover:text-nv-green transition">
+                <img src="x.png" alt="" class="w-6 h-6 rounded-full object-cover" />
+                Twitter / X
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-nv-green/20 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row md:items-center gap-6 justify-between">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="NVIDOG" class="w-9 h-9 rounded-full object-cover ring-1 ring-nv-green" />
+        <div>
+          <div class="font-display font-bold tracking-[0.2em] text-sm">NVIDOG</div>
+          <div class="font-mono text-[10px] text-nv-green tracking-[0.3em]">$NVIDOG · SOLANA</div>
+        </div>
+      </div>
+      <p class="text-xs text-nv-mute max-w-xl leading-relaxed">
+        $NVIDOG is a community meme token. NVIDOG is inspired by NVIDIA’s visual language and is not affiliated with, endorsed by, or related to NVIDIA Corporation. Crypto is volatile. This is not financial advice.
+      </p>
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/NVIDOG" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden ring-1 ring-white/10 hover:ring-nv-green" aria-label="Telegram">
+          <img src="tg.png" alt="Telegram" class="w-full h-full object-cover" />
+        </a>
+        <a href="https://x.com/NVIDOG" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full overflow-hidden bg-black ring-1 ring-white/10 hover:ring-nv-green" aria-label="X">
+          <img src="x.png" alt="X" class="w-full h-full object-cover" />
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+    <div class="clip-chip bg-nv-green text-nv-black font-display font-bold tracking-[0.2em] uppercase text-xs px-5 py-3 shadow-glow">
+      Contract copied
+    </div>
+  </div>
+
+  <script>
+    const CONFIG = {
+      ca: "TBA",
+      buyUrl: "https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA",
+      chartUrl: "https://dexscreener.com/solana/TBA",
+      embedUrl: "https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15",
+      telegram: "https://t.me/NVIDOG",
+      twitter: "https://x.com/NVIDOG"
+    };
+
+    function formatCa(ca) {
+      if (!ca || ca.length < 16) return ca;
+      return ca.slice(0, 6) + "..." + ca.slice(-6);
+    }
+
+    document.querySelectorAll("[data-buy]").forEach((el) => { el.href = CONFIG.buyUrl; });
+    document.querySelectorAll("[data-chart]").forEach((el) => { el.href = CONFIG.chartUrl; });
+
+    const caText = document.getElementById("caText");
+    if (caText) caText.textContent = formatCa(CONFIG.ca);
+
+    const dex = document.getElementById("dexEmbed");
+    if (dex) dex.src = CONFIG.embedUrl;
+
+    const placeholder = document.getElementById("chartPlaceholder");
+    if (placeholder && (!CONFIG.ca || CONFIG.ca.toUpperCase() === "TBA")) {
+      placeholder.classList.remove("hidden");
+      placeholder.classList.add("flex");
+    }
+
+    const nav = document.getElementById("nav");
+    const onScroll = () => nav.classList.toggle("nav-scrolled", window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+    mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => mobileMenu.classList.add("hidden")));
+
+    const toast = document.getElementById("toast");
+    function showToast() {
+      toast.classList.remove("opacity-0", "translate-y-3");
+      toast.classList.add("opacity-100", "translate-y-0");
+      setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-y-3");
+        toast.classList.remove("opacity-100", "translate-y-0");
+      }, 1800);
+    }
+
+    async function copyCa() {
+      try {
+        await navigator.clipboard.writeText(CONFIG.ca);
+        showToast();
+      } catch {
+        const area = document.createElement("textarea");
+        area.value = CONFIG.ca;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        area.remove();
+        showToast();
+      }
+    }
+    document.getElementById("copyCa").addEventListener("click", copyCa);
+  </script>
+</body>
+</html>
